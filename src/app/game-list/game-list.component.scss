@@ -1,0 +1,38 @@
+$width: 400px;
+
+section {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+}
+
+article {
+  width: $width;
+  margin: 5px;
+  border: 1px solid silver;
+
+
+  header {
+    display: flex;
+    align-items: center;
+
+    .spacer {
+      flex: 1;
+    }
+
+    &+img {
+      width: $width;
+    }
+  }
+
+  footer {
+    margin-top: 10px;
+
+    a {
+      padding: 5px;
+      color: gray;
+      text-decoration: none;
+      text-transform: uppercase;
+    }
+  }
+}

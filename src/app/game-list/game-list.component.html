@@ -1,1 +1,29 @@
-<p>game-list works!</p>
+<h1>Jeux disponibles</h1>
+
+<app-game-list-filter></app-game-list-filter>
+
+<section>
+  <article *ngFor="let game of entities">
+    <header>
+      <img src="http://fakeimg.pl/50" alt="editor">
+      <div>
+        <h1>{{ game.name }}</h1>
+        <p>{{ game.category }}</p>
+      </div>
+      <div class="spacer"></div>
+      <p>{{ game.note }}/10</p>
+    </header>
+
+    <img [src]="game.image" alt="game logo">
+
+    <main>
+      {{ truncate(game.description) }}
+    </main>
+
+    <footer>
+      <a href="#">Follow</a>
+      <a href="#">SHARE</a>
+      <a href="#">Buy</a>
+    </footer>
+  </article>
+</section>
