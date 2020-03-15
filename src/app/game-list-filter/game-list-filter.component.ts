@@ -7,6 +7,8 @@ import { Component, OnInit } from '@angular/core';
 })
 export class GameListFilterComponent implements OnInit {
 
+  gameCategories = [ 'MMO', 'RPG', 'FPS' ];
+
   constructor() { }
 
   ngOnInit(): void {
