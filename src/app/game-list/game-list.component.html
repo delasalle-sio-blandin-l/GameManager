@@ -21,9 +21,11 @@
     </main>
 
     <footer>
-      <a href="#" (click)="onFollow($event, game)">Follow</a>
-      <a href="#" (click)="onShare($event, game)">SHARE</a>
-      <a href="#" (click)="onBuy($event, game)">Buy</a>
+      <app-game-actions
+          (follow)="onFollow(game)"
+          (share)="onShare(game)"
+          (buy)="onBuy(game)">
+      </app-game-actions>
     </footer>
   </article>
 </section>
