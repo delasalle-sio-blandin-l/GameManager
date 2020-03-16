@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+
 import { Game } from './game';
+
+import { GameActions } from './game-actions';
 
 @Component({
   selector: 'app-game-list',
@@ -41,8 +44,8 @@ export class GameListComponent implements OnInit {
     return words.join(' ') + (words.length > 20 ? + '...' : '');
   }
 
-  onActionClick(action: string, game: Game) {
-    alert(`${action} the game nammed ${game.name}`);
+  onActionClick(action: GameActions, game: Game) {
+    alert(`${['follow', 'share', 'buy'][action]} the game nammed ${game.name}`);
   }
 
 }

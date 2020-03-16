@@ -1,5 +1,7 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 
+import { GameActions } from './../game-actions';
+
 @Component({
   selector: 'app-game-actions',
   templateUrl: './game-actions.component.html',
@@ -8,25 +10,20 @@ import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 export class GameActionsComponent implements OnInit {
 
   @Output()
-  private readonly click = new EventEmitter<string>()
+  private readonly click = new EventEmitter<GameActions>();
+
+  readonly follow = GameActions.FOLLOW;
+  readonly share = GameActions.SHARE;
+  readonly buy = GameActions.BUY;
 
   constructor() { }
 
   ngOnInit() {
   }
 
-  onFollow(event: MouseEvent) {
+  onAction(action: GameActions, event: MouseEvent) {
+    event.stopPropagation();
     event.preventDefault();
-    this.click.emit('follow');
-  }
-
-  onShare(event: MouseEvent) {
-    event.preventDefault();
-    this.click.emit('share');
-  }
-
-  onBuy(event: MouseEvent) {
-    event.preventDefault();
-    this.click.emit('buy');
+    this.click.emit(action);
   }
 }
