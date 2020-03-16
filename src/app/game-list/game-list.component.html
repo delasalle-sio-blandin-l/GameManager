@@ -2,8 +2,13 @@
 
 <app-game-list-filter></app-game-list-filter>
 
+<div>
+  <button (click)="sizeDown()">-</button>
+  <button (click)="sizeUp()">+</button>
+</div>
+
 <section>
-  <article *ngFor="let game of entities">
+  <article *ngFor="let game of entities" [ngStyle]="{'width': width + 'px'}">
     <header>
       <img src="http://fakeimg.pl/50" alt="editor">
       <div>
