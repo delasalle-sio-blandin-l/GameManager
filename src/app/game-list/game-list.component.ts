@@ -41,17 +41,8 @@ export class GameListComponent implements OnInit {
     return words.join(' ') + (words.length > 20 ? + '...' : '');
   }
 
-  onFollow(game: Game) {
-    // alert('Follow the game nammed ' + game.name);
-    alert(`Follow the game nammed ${game.name}`);
-  }
-
-  onShare(game: Game) {
-    alert(`Share the game nammed ${game.name}`);
-  }
-
-  onBuy(game: Game) {
-    alert(`Buy the game nammed ${game.name}`);
+  onActionClick(action: string, game: Game) {
+    alert(`${action} the game nammed ${game.name}`);
   }
 
 }

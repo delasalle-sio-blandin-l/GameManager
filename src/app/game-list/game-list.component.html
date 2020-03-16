@@ -22,9 +22,7 @@
 
     <footer>
       <app-game-actions
-          (follow)="onFollow(game)"
-          (share)="onShare(game)"
-          (buy)="onBuy(game)">
+          (click)="onActionClick($event, game)">
       </app-game-actions>
     </footer>
   </article>

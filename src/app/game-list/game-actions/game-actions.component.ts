@@ -8,13 +8,7 @@ import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 export class GameActionsComponent implements OnInit {
 
   @Output()
-  private readonly follow = new EventEmitter<void>();
-
-  @Output()
-  private readonly share = new EventEmitter<void>();
-
-  @Output()
-  private readonly buy = new EventEmitter<void>();
+  private readonly click = new EventEmitter<string>()
 
   constructor() { }
 
@@ -23,16 +17,16 @@ export class GameActionsComponent implements OnInit {
 
   onFollow(event: MouseEvent) {
     event.preventDefault();
-    this.follow.emit();
+    this.click.emit('follow');
   }
 
   onShare(event: MouseEvent) {
     event.preventDefault();
-    this.share.emit();
+    this.click.emit('share');
   }
 
   onBuy(event: MouseEvent) {
     event.preventDefault();
-    this.buy.emit();
+    this.click.emit('buy');
   }
 }
