@@ -5,6 +5,7 @@ import { AppComponent } from './app.component';
 import { GameListComponent } from './game-list/game-list.component';
 import { GameListFilterComponent } from './game-list-filter/game-list-filter.component';
 import { GameActionsComponent } from './game-list/game-actions/game-actions.component';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -14,7 +15,8 @@ import { GameActionsComponent } from './game-list/game-actions/game-actions.comp
     GameActionsComponent
   ],
   imports: [
-    BrowserModule
+    BrowserModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]
