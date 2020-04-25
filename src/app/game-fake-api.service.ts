@@ -1,14 +1,20 @@
 import { Injectable } from '@angular/core';
-import { games } from './game-list/game-data';
-import { of } from 'rxjs';
+//import { HttpClient } from '@angular/common/http';
+import { Observable, of } from 'rxjs';
+import { games } from "./game-list/game-data"
+import { Game } from './game-list/game';
+// import { GameFromAPI } from './game-list/game';
 
 @Injectable({
   providedIn: 'root'
 })
 
+
 export class GameFakeApiService {
 
-  getAll() {
+  constructor() { }
+
+  getAll(): Observable<Game[]> {
     return of(games);
   }
 }
