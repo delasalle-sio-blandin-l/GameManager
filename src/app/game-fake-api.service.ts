@@ -16,5 +16,6 @@ export class GameFakeApiService {
 
   getAll(): Observable<Game[]> {
     return of(games);
+    
   }
 }

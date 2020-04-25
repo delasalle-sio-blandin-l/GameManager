@@ -14,7 +14,7 @@ export class GameCategoryFakeApiService {
   constructor() { }
 
   getAll(): Observable<Game[]> {
-    return of(games);
+    return of(games); 
   }
 
 }
