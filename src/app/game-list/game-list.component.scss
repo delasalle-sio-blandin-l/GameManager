@@ -26,7 +26,7 @@ h1 {
   background-color: rgb(230, 230, 230);
   border-color: black;
   border-radius: 5px;
-  border: .25em solid;
+  border: .15em solid;
   display: flex;
   flex-direction: column;
   margin: 10px auto 10px auto;
@@ -38,4 +38,8 @@ h1 {
 
 .action {
   text-align: center;
+}
+
+.btn-supprimer-jeu {
+  width: 50%;
 }
