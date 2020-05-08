@@ -1,33 +1,41 @@
-$width: 300px;
+/* Police du site */
+@import url('https://fonts.googleapis.com/css?family=Poppins:200i,400&display=swap');
 
-section {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-evenly;
+h1 {
+  text-align: center;
+  margin-bottom: 25px;
+  font-family: 'Poppins', sans-serif;
 }
 
-article {
-  width: $width;
-  margin: 5px;
-  border: 1px solid silver;
+.cards {
+  background-color: #c7c6c6;
+  margin: auto 15%;
+  padding: 1%;
+  font-family: 'Poppins', sans-serif;
 
-
-  header {
-    display: flex;
-    align-items: center;
-
-    .spacer {
-      flex: 1;
-    }
-
-    &+img {
-      width: $width;
-    }
+  &__list {
+      display: flex;
+      flex-direction: row;
+      list-style: none;
+      flex-wrap: wrap;
+      padding: 0;
   }
+}
 
-  &:hover { 
-    border: 1px solid blue; 
+.card {
+  background-color: rgb(230, 230, 230);
+  border-color: black;
+  border-radius: 5px;
+  border: .25em solid;
+  display: flex;
+  flex-direction: column;
+  margin: 10px auto 10px auto;
+
+  &__container {
+      padding: 10px;
   }
+}
 
-  footer { margin-top: 10px; }
+.action {
+  text-align: center;
 }

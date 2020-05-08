@@ -1,35 +1,37 @@
 <h1>Jeux disponibles</h1>
 
-<app-game-list-filter (filter)="onFilter($event)"></app-game-list-filter>
+<!-- <app-game-list-filter (filter)="onFilter($event)"></app-game-list-filter> -->
+<app-game-list-filter></app-game-list-filter>
 
-<div>
-  <button (click)="sizeDown()">-</button>
-  <button (click)="sizeUp()">+</button>
-  <button (click)="sizeReset()">100%</button>
+<div class="cards">
+  <div>
+    <button (click)="sizeDown()">-</button>
+    <button (click)="sizeUp()">+</button>
+    <button (click)="sizeReset()">100%</button>
+  </div>
+
+  <ul class="cards__list">
+    <li class="card" *ngFor="let game of games" [ngStyle]="{'width': width + 'px'}">
+      <img src="http://fakeimg.pl/50" alt="editor">
+      <div class="card__container" >
+        <h4>{{ game.name }}</h4> 
+        <p><strong>Categorie : </strong><span>{{ game.category }}</span></p> 
+        <p><strong><span>Developer : </span> {{game.editor}}</strong></p>
+        <p><strong>Note : </strong>{{ game.note }} /10</p> 
+        <p style="width: 300px;"><strong>Description : </strong> {{ truncate(game.description) }}</p>
+      </div>
+      <div class="action">
+        <app-game-actions
+          (click)="onActionClick($event, game)">
+        </app-game-actions>
+      </div>
+    </li>
+  </ul>
 </div>
 
-<section>
-  <article *ngFor="let game of GameFakeApiService" [ngStyle]="{'width': width + 'px'}">
-    <header>
-      <img src="http://fakeimg.pl/50" alt="editor">
-      <div>
-        <h1>{{ game.name }}</h1>
-        <p>{{ game.category }}</p>
-      </div>
-      <div class="spacer"></div>
-      <p>{{ game.note }}/10</p>
-    </header>
 
-    <img [src]="game.image" alt="game logo">
 
-    <main>
-      {{ truncate(game.description) }}
-    </main>
 
-    <footer>
-      <app-game-actions
-          (click)="onActionClick($event, game)">
-      </app-game-actions>
-    </footer>
-  </article>
-</section>
+
+
+

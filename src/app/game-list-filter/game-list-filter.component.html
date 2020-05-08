@@ -1,5 +1,3 @@
-{{ form | json }}
-
 <form (submit)="onSubmit($event)">
   <input (change)="onChange('name', $event.target.value)" name="name" type="text" placeholder="Nom">
     <select (change)="onChange('category', $event.target.value)" name="category">

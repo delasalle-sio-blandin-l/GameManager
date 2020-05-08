@@ -15,6 +15,8 @@ export class GameFakeApiService {
   constructor() { }
 
   getAll(): Observable<Game[]> {
+
+    setTimeout( () => {return of(games)} , 3000); 
     return of(games);
     
   }
