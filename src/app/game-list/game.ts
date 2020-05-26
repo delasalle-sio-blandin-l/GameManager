@@ -1,4 +1,5 @@
 import { Category } from '../game-list-filter/category';
+import { Editor } from '../game-list-filter/editor';
 
 export interface Game {
     id: number;
@@ -6,8 +7,6 @@ export interface Game {
     name: string;
   
     description: string;
-  
-    editor: string;
   
     image: string;
   
@@ -17,6 +16,10 @@ export interface Game {
 
   export interface GameCategory extends Game {
     genres: Category[];
+  }
+
+  export interface GameEditor extends Game {
+    publisher: Editor[];
   }
   
   export interface GameDTO extends Game{

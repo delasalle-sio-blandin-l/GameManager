@@ -25,7 +25,9 @@
         <div class="spacer"></div>
         <p>{{ game.note }}/10</p>
       </header>
-      
+      <div>
+        <p>Editor : {{ game.publisher }}</p>
+      </div>
       <main>
         {{ truncate(game.description) }}
       </main>

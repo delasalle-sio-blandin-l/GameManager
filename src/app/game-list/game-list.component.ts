@@ -26,16 +26,14 @@ export class GameListComponent implements OnInit {
 
 
   ngOnInit() {
-    setTimeout(() => {
-      this.gameapiService.getGames().subscribe((data) => {
-        this.entities = data;
-        console.log(`Entities : ${JSON.stringify(this.entities)}`);
-        this.totalRecords = this.entities.length;
-        console.log(`TotalRecords : ${this.totalRecords}`);
-        // this.entities = Array(50).fill(0).map((x, i) => ({ id: (i +1), name: `entity ${i + 1}`}));
-        this.filter();
-      })
-    }, 2000);
+    this.gameapiService.getGames().subscribe((data) => {
+      this.entities = data;
+      console.log(`Entities : ${JSON.stringify(this.entities)}`);
+      this.totalRecords = this.entities.length;
+      console.log(`TotalRecords : ${this.totalRecords}`);
+      // this.entities = Array(50).fill(0).map((x, i) => ({ id: (i +1), name: `entity ${i + 1}`}));
+      this.filter();
+    });
   }
 
   truncate(value: string) {
@@ -67,18 +65,19 @@ export class GameListComponent implements OnInit {
 
   onFilter(filterForm: GameFilter) {
     this.filterForm = filterForm;
-    this.filter()
+    this.filter();
   }
 
   private filter() {
     if (this.entities)
     if (this.filterForm)
     this.filteredEntities = this.entities
-    // e = game mais c'est pas bien de faire des variables comme ça poncy ;)
-    // c'est pas très intelligible tout ça
-        .filter(e => (!this.filterForm.name || e.title.toLocaleLowerCase().includes(this.filterForm.name))
-            && (!this.filterForm.category || e.genres.find(genre => genre.name === this.filterForm.category))
-            && (!this.filterForm.editor || e.developer.toLowerCase().includes(this.filterForm.editor)));
+
+        .filter(e => (!this.filterForm.name || e.title.toLowerCase().includes(this.filterForm.name))
+        
+             && (!this.filterForm.category || e.genres.find(genre => genre.name === this.filterForm.category))
+        );
+            //&& (!this.filterForm.editor || e.editor.toLowerCase().includes(this.filterForm.editor)));
     else
     this.filteredEntities = this.entities;
   }

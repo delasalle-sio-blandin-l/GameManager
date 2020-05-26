@@ -7,7 +7,12 @@
       <option value="">Catégorie du jeu</option>
       <option *ngFor="let c of gameCategories">{{ c }}</option>
     </select>
-    <input (change)="onChange('editor', $event.target.value)" name="editor" type="text" placeholder="Editeur">
+
+    <select (change)="onChange('editor', $event.target.value)" name="editor">
+      <option value="">Editeur</option>
+      <option *ngFor="let e of gameEditor">{{ e }}</option>
+    </select>
+    <!-- <input (change)="onChange('editor', $event.target.value)" name="editor" type="text" placeholder="Editeur"> -->
   
     <input type="reset" value="RAZ" (click)="onReset()">
     <input type="submit" value="Filter">
