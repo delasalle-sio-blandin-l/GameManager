@@ -1,36 +1,42 @@
 <h1>Jeux disponibles</h1>
 
-<app-game-list-filter></app-game-list-filter>
-
-<div class="cards">
+  <ng-template #loading>
+    <p>Chargement...</p>
+  </ng-template>
+    
+  <app-game-list-filter (filter)="onFilter($event)"></app-game-list-filter>
+  
   <div>
     <button (click)="sizeDown()">-</button>
     <button (click)="sizeUp()">+</button>
     <button (click)="sizeReset()">100%</button>
   </div>
-
-  <ul class="cards__list">
-    <li class="card" *ngFor="let game of games" [ngStyle]="{'width': width + 'px'}">
-      <img src="http://fakeimg.pl/50" alt="editor">
-      <div class="card__container" >
-        <h4>{{ game.name }}</h4> 
-        <p><strong>Categorie : </strong><span>{{ game.category }}</span></p> 
-        <p><strong><span>Developer : </span> {{game.editor}}</strong></p>
-        <p><strong>Note : </strong>{{ game.note }} /10</p> 
-        <p style="width: 300px;"><strong>Description : </strong> {{ truncate(game.description) }}</p>
-      </div>
-      <div class="action">
-        <app-game-actions
-          (click)="onActionClick($event, game)">
-        </app-game-actions>
-      </div>
-    </li>
-  </ul>
-</div>
-
-
-
-
-
-
-
+  
+  <section *ngIf="filteredEntities; else loading"> 
+    <article *ngFor="let game of filteredEntities" [ngStyle]="{'width': width + 'px'}">
+      <header>
+        <img [src]="game.coverImage" alt="game logo">
+        <div>
+          <h1>{{ game.title }}</h1>
+          
+          <!-- <select ng-options="game as game.genres for game in game"></select> -->
+          <p *ngFor="let genre of game.genres">{{ genre.name }}</p>
+        </div>
+        <div class="spacer"></div>
+        <p>{{ game.note }}/10</p>
+      </header>
+      
+      <main>
+        {{ truncate(game.description) }}
+      </main>
+      
+      <footer>
+        <button
+          type="button"
+          (click)="delete(game.id)"
+          id="delete">
+          supprimer
+        </button>
+      </footer>
+    </article>
+  </section>

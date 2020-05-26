@@ -1,3 +1,5 @@
+import { Category } from '../game-list-filter/category';
+
 export interface Game {
     id: number;
   
@@ -11,6 +13,12 @@ export interface Game {
   
     /** Note/10. */
     note: number;
+  }
+
+  export interface GameCategory extends Game {
+    genres: Category[];
+  }
   
-    category: string;
+  export interface GameDTO extends Game{
+    genres: number[];
   }

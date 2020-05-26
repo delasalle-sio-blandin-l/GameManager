@@ -1,45 +1,54 @@
 /* Police du site */
 @import url('https://fonts.googleapis.com/css?family=Poppins:200i,400&display=swap');
 
+$width: 300px;
+
 h1 {
-  text-align: center;
-  margin-bottom: 25px;
-  font-family: 'Poppins', sans-serif;
+ font-family: 'Poppins';
+ text-align: center;
 }
-
-.cards {
-  background-color: #c7c6c6;
-  margin: auto 15%;
-  padding: 1%;
-  font-family: 'Poppins', sans-serif;
-
-  &__list {
-      display: flex;
-      flex-direction: row;
-      list-style: none;
-      flex-wrap: wrap;
-      padding: 0;
-  }
-}
-
-.card {
-  background-color: rgb(230, 230, 230);
-  border-color: black;
-  border-radius: 5px;
-  border: .15em solid;
+section {
   display: flex;
-  flex-direction: column;
-  margin: 10px auto 10px auto;
-
-  &__container {
-      padding: 10px;
-  }
+  flex-wrap: wrap;
+  justify-content: space-evenly;
 }
 
-.action {
+article {
+  width: $width;
+  margin: 5px;
+  border: 1px solid silver;
+
+  header {
+    display: flex;
+    align-items: center;
+
+    .spacer {
+      flex: 1;
+    }
+
+    &+img {
+      width: $width;
+    }
+  }
+
+  &:hover { border: 1px solid blue; }
+
+  footer { margin-top: 10px; }
+}
+.paginationControls{
   text-align: center;
 }
 
-.btn-supprimer-jeu {
-  width: 50%;
+#delete {
+  display: block;
+  position: relative;
+  margin-left: auto;
+  margin-right: auto;
+  padding:6px 0 6px 0;
+	font:Bold 13px Arial;
+	background:#d34836;
+	color:#fff;
+	width:90px;
+	border-radius:2px;
+	border:none;
 }
