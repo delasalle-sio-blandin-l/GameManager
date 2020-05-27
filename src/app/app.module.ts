@@ -6,18 +6,22 @@ import { HttpClientModule } from '@angular/common/http';
 import { GameListModule } from './game-list/game-list.module';
 import { NotFoundComponent } from './not-found/not-found.component';
 import { Routes, RouterModule } from '@angular/router';
+import { GameFormComponent } from './game-form/game-form.component';
 
 // const appRoutes: Routes = [
-//   { path: '', redirectTo: '/product', pathMatch: 'full' },
-//   { path: '/product', component: GameListModule },
-//   { path: '**', component: NotFoundComponent },
-// ];
+//    { path: '', redirectTo: '/product', pathMatch: 'full' },
+//    { path: '/product', component: GameListModule },
+//    { path: '/product/new', component: GameFormComponent },
+//    { path: '/product/<productId>/edit', component: GameFormComponent },
+//    { path: '**', component: NotFoundComponent },
+//  ];
 
 
 @NgModule({
   declarations: [
     AppComponent,
     NotFoundComponent,
+    GameFormComponent,
   ],
   imports: [
     BrowserModule,
