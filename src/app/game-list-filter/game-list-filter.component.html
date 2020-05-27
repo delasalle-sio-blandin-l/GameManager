@@ -3,16 +3,12 @@
 
 <form (submit)="onSubmit($event)">
   <input (change)="onChange('name', $event.target.value)" name="name" type="text" placeholder="Nom">
-    <select (change)="onChange('category', $event.target.value)" name="category">
+    <select (change)="onChange('category', $event.target.value)" name="category" ngModel>
       <option value="">Catégorie du jeu</option>
       <option *ngFor="let c of gameCategories">{{ c }}</option>
     </select>
 
-    <select (change)="onChange('editor', $event.target.value)" name="editor">
-      <option value="">Editeur</option>
-      <option *ngFor="let e of gameEditor">{{ e }}</option>
-    </select>
-    <!-- <input (change)="onChange('editor', $event.target.value)" name="editor" type="text" placeholder="Editeur"> -->
+    <input (change)="onChange('editor', $event.target.value)" name="editor" type="text" placeholder="Editeur">
   
     <input type="reset" value="RAZ" (click)="onReset()">
     <input type="submit" value="Filter">
