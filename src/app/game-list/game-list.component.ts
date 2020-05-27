@@ -31,7 +31,6 @@ export class GameListComponent implements OnInit {
       console.log(`Entities : ${JSON.stringify(this.entities)}`);
       this.totalRecords = this.entities.length;
       console.log(`TotalRecords : ${this.totalRecords}`);
-      // this.entities = Array(50).fill(0).map((x, i) => ({ id: (i +1), name: `entity ${i + 1}`}));
       this.filter();
     });
   }
@@ -69,14 +68,13 @@ export class GameListComponent implements OnInit {
   }
 
   private filter() {
-    if (this.entities)
-    if (this.filterForm)
-    this.filteredEntities = this.entities
+    if (this.entities && this.filterForm)
+      this.filteredEntities = this.entities
 
-        .filter(e => (!this.filterForm.name || e.title.toLowerCase().includes(this.filterForm.name))
-        
-             && (!this.filterForm.category || e.genres.find(genre => genre.name === this.filterForm.category))
-        );
+          .filter(e => (!this.filterForm.name || e.title.toLowerCase().includes(this.filterForm.name))
+          
+              && (!this.filterForm.category || e.genres.find(genre => genre.name === this.filterForm.category))
+          );
             //&& (!this.filterForm.editor || e.editor.toLowerCase().includes(this.filterForm.editor)));
     else
     this.filteredEntities = this.entities;

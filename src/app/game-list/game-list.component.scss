@@ -19,7 +19,6 @@ article {
   border: 1px solid silver;
 
   header {
-    display: flex;
     align-items: center;
 
     .spacer {
@@ -27,7 +26,7 @@ article {
     }
 
     &+img {
-      width: $width;
+      width: inherit;
     }
   }
 
@@ -35,8 +34,9 @@ article {
 
   footer { margin-top: 10px; }
 }
-.paginationControls{
-  text-align: center;
+
+img {
+  width: 298px;
 }
 
 #delete {
