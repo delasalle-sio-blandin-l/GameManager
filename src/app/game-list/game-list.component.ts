@@ -16,23 +16,20 @@ export class GameListComponent implements OnInit {
   defaultSize = 300;
   width = this.defaultSize;
 
-  entities;
+  // games: Game[];
+  filteredEntities: Game[];
 
-  filteredEntities = this.entities;
-  totalRecords: Number;
-  page: Number=1;
-  private filterForm: GameFilter; 
+  // array of all items to be paged
+  entities: Array<any>;
+    
+  private filterForm: GameFilter;
+
+
   constructor(private gameapiService: GameApiService) { }
 
 
   ngOnInit() {
-    this.gameapiService.getGames().subscribe((data) => {
-      this.entities = data;
-      console.log(`Entities : ${JSON.stringify(this.entities)}`);
-      this.totalRecords = this.entities.length;
-      console.log(`TotalRecords : ${this.totalRecords}`);
-      this.filter();
-    });
+    this.getListGames();
   }
 
   truncate(value: string) {
@@ -67,17 +64,22 @@ export class GameListComponent implements OnInit {
     this.filter();
   }
 
-  private filter() {
-    if (this.entities && this.filterForm)
-      this.filteredEntities = this.entities
-
-          .filter(e => (!this.filterForm.name || e.title.toLowerCase().includes(this.filterForm.name))
-          
-              && (!this.filterForm.category || e.genres.find(genre => genre.name === this.filterForm.category))
-          );
-            //&& (!this.filterForm.editor || e.editor.toLowerCase().includes(this.filterForm.editor)));
+  private filter(){
+    if(this.entities)
+    if(this.filterForm)
+    this.filteredEntities = this.entities.filter(game => 
+              (!this.filterForm.name || game.title.toLocaleLowerCase().includes(this.filterForm.name))
+          &&  (!this.filterForm.category || game.genres.find(genre => genre.name === (this.filterForm.category)))
+          &&  (!this.filterForm.editor || game.developer.toLowerCase().includes(this.filterForm.editor)));
     else
     this.filteredEntities = this.entities;
+  }
+
+  getListGames() {
+    this.gameapiService.getGames().subscribe((data)=>{
+      this.entities = data;
+      this.filter();
+    });
   }
 
 }

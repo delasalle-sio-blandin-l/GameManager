@@ -15,8 +15,6 @@ export class GameListFilterComponent implements OnInit {
 
   gameCategories = [ 'MMO', 'RPG', 'FPS' ];
 
-  gameEditor = [ 'Activition', 'EA', 'Naugthy Dog' ];
-
   form: GameFilter = { name: '', category: '', editor: '' };
 
   @Output()
