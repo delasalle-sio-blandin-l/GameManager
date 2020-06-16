@@ -5,7 +5,7 @@
   <input (change)="onChange('name', $event.target.value)" name="name" type="text" placeholder="Nom">
     <select (change)="onChange('category', $event.target.value)" name="category" ngModel>
       <option value="">Catégorie du jeu</option>
-      <option *ngFor="let c of gameCategories">{{ c }}</option>
+      <option *ngFor="let c of gameCategories" [value]="c.id">{{ c.name }}</option>
     </select>
     <input (change)="onChange('editor', $event.target.value)" name="editor" type="text" placeholder="Editeur">
   

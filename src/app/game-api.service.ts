@@ -5,6 +5,7 @@ import { delay, map } from 'rxjs/operators';
 
 import { Game, GameDTO } from './game-list/game';
 import { Category } from './game-list-filter/category';
+import { Editor } from './game-list-filter/editor';
 
 @Injectable({
   providedIn: 'root'
@@ -22,13 +23,15 @@ export class GameApiService {
   public getGames() {
     return forkJoin([
       this.httpClient.get<GameDTO[]>(this.urlApi + '/games'),
-      this.getCategories()
+      this.getCategories(), 
+      this.httpClient.get<Editor[]>(this.urlApi + '/publishers')
     ]).pipe(
       delay(1000),
       map(([
         games,
-        categories
-      ]) => this.convert(games, categories))
+        categories,
+        editors
+      ]) => this.convert(games, categories, editors))
     )
   }
 
@@ -37,10 +40,11 @@ export class GameApiService {
     return this.httpClient.delete(url);
   }
 
-  private convert(games: GameDTO[], categories: Category[]): Game[] {
+  private convert(games: GameDTO[], categories: Category[], editors: Editor[]): Game[] {
     return games.map(game => ({
       ...game,
-      genres: game.genres.map(genre => categories.find(category => category.id === Number(genre)))
+      genres: game.genres.map(genre => categories.find(category => category.id === +genre)),
+      editor: editors.find(editor => editor.id === game.publisher)
     }))
   }
 

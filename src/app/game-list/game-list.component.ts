@@ -65,20 +65,28 @@ export class GameListComponent implements OnInit {
   }
 
   private filter(){
-    if(this.entities)
-    if(this.filterForm)
-    this.filteredEntities = this.entities.filter(game => 
-              (!this.filterForm.name || game.title.toLocaleLowerCase().includes(this.filterForm.name))
-          &&  (!this.filterForm.category || game.genres.find(genre => genre.name === (this.filterForm.category)))
-          &&  (!this.filterForm.editor || game.developer.toLowerCase().includes(this.filterForm.editor)));
-    else
-    this.filteredEntities = this.entities;
+    if(this.entities) {
+      if(this.filterForm) {
+        this.filteredEntities = this.entities.filter(e => 
+              (!this.filterForm.name || e.title.toLocaleLowerCase().includes(this.filterForm.name))
+            && (!this.filterForm.category || e.genres.find(genre => genre.id === +this.filterForm.category))
+            && (!this.filterForm.editor 
+                || e.editor.name.toLocaleLowerCase().includes(this.filterForm.editor.toLocaleLowerCase())));
+      }
+      else {
+        this.filteredEntities = this.entities;
+      }
+    }
+    else {
+      this.filteredEntities = [];
+    }
   }
 
   getListGames() {
     this.gameapiService.getGames().subscribe((data)=>{
       this.entities = data;
       this.filter();
+      console.log({data});
     });
   }
 

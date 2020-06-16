@@ -1,4 +1,6 @@
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
+import { GameApiService } from '../game-api.service';
+import { Category } from './category';
 
 export interface GameFilter {
   name: string;
@@ -13,16 +15,19 @@ export interface GameFilter {
 })
 export class GameListFilterComponent implements OnInit {
 
-  gameCategories = [ 'MMO', 'RPG', 'FPS' ];
+  gameCategories: Category[];
 
   form: GameFilter = { name: '', category: '', editor: '' };
 
   @Output()
   filter = new EventEmitter<GameFilter>();
 
-  constructor() { }
+  constructor(private readonly gameapiService: GameApiService) { }
 
   ngOnInit(): void {
+    this.gameapiService
+        .getCategories()
+        .subscribe((data) => this.gameCategories = data)
   }
 
   onChange(key: string, value: string) {
