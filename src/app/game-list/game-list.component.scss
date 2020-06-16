@@ -26,7 +26,7 @@ article {
     }
 
     &+img {
-      width: inherit;
+      width: auto;
     }
   }
 
@@ -36,7 +36,7 @@ article {
 }
 
 img {
-  width: 298px;
+  width: 100%;
 }
 
 #delete {
