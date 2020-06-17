@@ -1,5 +1,5 @@
 import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import { BrowserModule } from '@angular/platform-browser';
 
 import { NotFoundComponent } from './not-found.component';
 
@@ -9,7 +9,10 @@ import { NotFoundComponent } from './not-found.component';
     NotFoundComponent
   ],
   imports: [
-    CommonModule
+    BrowserModule
+  ],
+  exports: [
+    NotFoundComponent
   ]
 })
 export class NotFoundModule { }

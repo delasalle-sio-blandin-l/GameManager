@@ -6,11 +6,13 @@ import { HttpClientModule } from '@angular/common/http';
 import { GameListModule } from './game-list/game-list.module';
 import { AppRoutingModule } from './app-routing.module';
 import { NotFoundModule } from './not-found/not-found.module';
+import { GameDetailsComponent } from './game-details/game-details.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
+    GameDetailsComponent,
   ],
   imports: [
     BrowserModule,

@@ -2,11 +2,12 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { NotFoundComponent } from './not-found/not-found.component';
 import { GameListComponent } from './game-list/game-list.component';
+import { GameDetailsComponent } from './game-details/game-details.component';
 
 const routes: Routes = [
   { path: '', redirectTo: 'product', pathMatch: 'full'},
   { path: 'product', component: GameListComponent },
-  //{ path: 'product/:productId', component: GameDetailsComponent },
+  { path: 'product/:productId', component: GameDetailsComponent },
 
 
   { path: '**', component: NotFoundComponent},
