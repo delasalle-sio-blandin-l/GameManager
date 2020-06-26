@@ -6,14 +6,16 @@ import { GameDetailsComponent } from './game-details/game-details.component';
 import { GameFormComponent } from './game-form/game-form.component';
 
 const routes: Routes = [
-  { path: '', redirectTo: 'product', pathMatch: 'full'},
   { path: 'product', component: GameListComponent },
-  { path: 'product/:productId', component: GameDetailsComponent },
-
+  
   { path: 'product/new', component: GameFormComponent },
-  { path: 'product/:productId/edit', component: GameFormComponent },
+  { path: 'product/:id/edit', component: GameFormComponent },
 
-  { path: '**', component: NotFoundComponent},
+  { path: 'product/:id', component: GameDetailsComponent },
+
+
+  { path: '', redirectTo: '/product', pathMatch: 'full'},
+  { path: '**', component: NotFoundComponent }
 ];
 
 @NgModule({

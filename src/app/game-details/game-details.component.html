@@ -1,5 +1,17 @@
-<p>Je n'ai pas réussi à allez plus loin</p>
+<div class="gameDetails" *ngIf="game ;else NoGameFound"> 
+    
+    <p> <span class="gameName"> {{game.name}} </span> </p><br>
+    <p> <span class="gameName"> {{game.editor}} </span> </p><br>
+    <img src="{{game.image}}" alt=""><br>
+    <p> <span class="gameDescription"> {{game.description}} </span> </p>
+    <p> <span class="gameDescription"> {{game.note}} </span> </p>
+</div>
 
-<p>Page game-details</p>
 
-<p>Je ne sais pas pourquoi quand on clique sur "New game" on est pas dirigé vers la bonne page</p>
+<ng-template #NoGameFound >
+    <div class="noGameFound gameDetails">
+        NO GAME FOUND
+    </div>
+</ng-template>
+
+<button (click)="goBack()">Retour</button>

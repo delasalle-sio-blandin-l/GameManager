@@ -1,0 +1,21 @@
+.gameDetails {
+    width: 60%;
+    margin-left: 20%;
+    margin-right: 20%;
+    align-content: center;
+}
+.gameName {
+text-align: center;
+font-size: 2rem;
+}
+.gameDescription {
+    font-size: 1rem;
+}
+
+.noGameFound {
+    color: #FFFFFF;
+background: #912C22;
+text-shadow: 0 0 10px #FFFFFF;
+border-radius: 50%;
+text-align: center;
+}

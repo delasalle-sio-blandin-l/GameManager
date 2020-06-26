@@ -14,13 +14,11 @@
   
   <section *ngIf="filteredEntities; else loading" >
     <article *ngFor="let game of filteredEntities" [ngStyle]="{'width': width + 'px'}">
-      <!-- <a routerLink="/product/{{game.id}}"> {{game.title}} </a> -->
       <header>
         <div>
-          <img [src]="game.coverImage" alt="game logo">
+          <img [src]="game.coverImage" (click)="seeDetails(game.id)" alt="game logo">
           <h1>{{ game.title }}</h1>
-          
-          <p *ngFor="let genre of game.genres">{{ genre.name }}</p>
+            <p *ngFor="let genre of game.genres">{{ genre.name }}</p>
         </div>
         <div class="spacer"></div>
       </header>
@@ -30,9 +28,14 @@
       <main>
         {{ truncate(game.description) }}
       </main>
-      
+        
       <footer>
         <button type="button" (click)="delete(game.id)" id="delete">supprimer</button>
+        <!-- <button type="button" (click)="edit(game.id)" id="delete">editer</button> -->
       </footer>
     </article>
   </section>
+
+  <div class="card-footer pb-0 pt-3">
+    <jw-pagination [items]="items" (changePage)="onChangePage($event)"></jw-pagination>
+  </div>

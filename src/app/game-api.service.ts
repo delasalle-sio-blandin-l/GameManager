@@ -39,7 +39,7 @@ export class GameApiService {
     const url = `${this.urlApi}/games/${id}`;
     return this.httpClient.delete(url);
   }
-
+  
   private convert(games: GameDTO[], categories: Category[], editors: Editor[]): Game[] {
     return games.map(game => ({
       ...game,

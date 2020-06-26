@@ -6,6 +6,8 @@ import { GameApiService } from '../game-api.service';
 import { Game } from './game';
 import { GameActions } from './game-actions';
 
+import { RouterModule, Routes, Router} from '@angular/router';
+
 @Component({
   selector: 'app-game-list',
   templateUrl: './game-list.component.html',
@@ -25,7 +27,11 @@ export class GameListComponent implements OnInit {
   private filterForm: GameFilter;
 
 
-  constructor(private gameapiService: GameApiService) { }
+  // current page of items
+  pageOfItems: Array<any>;
+
+
+  constructor(private gameapiService: GameApiService, private router: Router) { }
 
 
   ngOnInit() {
@@ -88,6 +94,21 @@ export class GameListComponent implements OnInit {
       this.filter();
       console.log({data});
     });
+  }
+
+  seeDetails(id:number) {
+    console.log(id);
+    this.router.navigate(['/product/'+id])
+  }
+
+  edit(id:number) {
+    console.log(id);
+    this.router.navigate(['/product/'+id + '/edit'])
+  }
+
+  onChangePage(pageOfItems: Array<any>) {
+    // update current page of items
+    this.pageOfItems = pageOfItems;
   }
 
 }

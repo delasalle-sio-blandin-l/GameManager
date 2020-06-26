@@ -1,3 +1,9 @@
-<p>Je n'ai pas réussi à allez plus loin</p>
+<div *ngIf="isNew ;else editForm">
+    <p>NEW</p>
+</div>
 
-<p>Page game-form</p>
+<ng-template #editForm>
+    <p>EDIT {{theIdProduct}}</p>
+</ng-template>
+
+<h1>Title</h1>
